@@ -32,7 +32,7 @@ public class LegadoController {
      * @param cpfCnpj CPF ou CNPJ do cliente
      * @return lista de dívidas encontradas no sistema legado
      */
-    @GetMapping("/dividas/{cpfCnpj}")
+    @GetMapping("/dividas/{*cpfCnpj}")
     public ResponseEntity<List<DividaLegado>> buscarDividas(@PathVariable String cpfCnpj) {
         log.info("Recebida requisição para buscar dívidas do legado. CPF/CNPJ: {}", cpfCnpj);
 
@@ -47,7 +47,7 @@ public class LegadoController {
      * @param cpfCnpj CPF ou CNPJ do cliente
      * @return dados do cliente ou status HTTP 404 se não encontrado
      */
-    @GetMapping("/clientes/{cpfCnpj}")
+    @GetMapping("/clientes/{*cpfCnpj}")
     public ResponseEntity<ClienteLegado> buscarCliente(@PathVariable String cpfCnpj) {
         log.info("Recebida requisição para buscar cliente do legado. CPF/CNPJ: {}", cpfCnpj);
 

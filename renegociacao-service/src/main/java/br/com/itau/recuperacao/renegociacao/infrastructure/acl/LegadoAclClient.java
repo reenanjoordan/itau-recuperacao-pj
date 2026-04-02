@@ -12,7 +12,9 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
 import java.util.Collections;
 import java.util.List;
 
@@ -43,10 +45,14 @@ public class LegadoAclClient {
     public List<Divida> buscarDividas(String cpfCnpj) {
         log.info("Consultando dívidas no legado para cpfCnpj={}", mascararDocumento(cpfCnpj));
 
-        String url = baseUrl + "/api/v1/legado/dividas/" + cpfCnpj;
+        URI uri = UriComponentsBuilder.fromHttpUrl(baseUrl)
+                .path("/api/v1/legado/dividas/")
+                .pathSegment(cpfCnpj)
+                .build()
+                .toUri();
 
         ResponseEntity<List<DividaLegadoDto>> response = restTemplate.exchange(
-                url,
+                uri,
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<>() {}
