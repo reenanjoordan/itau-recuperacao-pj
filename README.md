@@ -16,7 +16,6 @@ O desenho segue o padrão **Strangler Fig**: novas capacidades expõem APIs alin
 - [Pré-requisitos](#pré-requisitos)
 - [Código-fonte e clonagem](#código-fonte-e-clonagem)
 - [Documentação adicional](#documentação-adicional)
-- [Plano de apresentação (Itaú)](docs/plano-apresentacao-itau.md)
 - [Como executar](#como-executar)
 - [Checklist rápido de demonstração](#checklist-rápido-de-demonstração)
 - [URLs úteis](#urls-úteis)
@@ -137,7 +136,6 @@ Branch principal: **main**.
 | Documento | Descrição |
 |-----------|-----------|
 | [docs/relatorio-tecnico.md](docs/relatorio-tecnico.md) | **Anexo técnico**: arquitetura detalhada, padrões, segurança, integrações e aprofundamentos para avaliação |
-| [docs/plano-apresentacao-itau.md](docs/plano-apresentacao-itau.md) | Roteiro, mensagens-chave e checklist para apresentação ao Itaú |
 
 ## Como executar
 
@@ -250,8 +248,7 @@ itau-recuperacao-pj/
 ├── docker-compose-services.yml     # Microsserviços adicionais (Compose overlay)
 ├── config/                          # Ex.: exclusões SpotBugs
 ├── docs/
-│   ├── relatorio-tecnico.md        # Anexo técnico para avaliação
-│   └── plano-apresentacao-itau.md # Roteiro de apresentação ao Itaú
+│   └── relatorio-tecnico.md        # Anexo técnico para avaliação
 ├── renegociacao-service/
 │   ├── pom.xml
 │   ├── Dockerfile
