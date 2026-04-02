@@ -16,6 +16,7 @@ O desenho segue o padrão **Strangler Fig**: novas capacidades expõem APIs alin
 - [Pré-requisitos](#pré-requisitos)
 - [Código-fonte e clonagem](#código-fonte-e-clonagem)
 - [Documentação adicional](#documentação-adicional)
+- [Diagrama de arquitetura para apresentação](docs/diagrama-arquitetura-apresentacao-itau.md)
 - [Como executar](#como-executar)
 - [Checklist rápido de demonstração](#checklist-rápido-de-demonstração)
 - [URLs úteis](#urls-úteis)
@@ -108,6 +109,8 @@ flowchart TB
   acl --> mf
 ```
 
+Diagramas adicionais para **apresentação** (executivo / exportação para slide): [docs/diagrama-arquitetura-apresentacao-itau.md](docs/diagrama-arquitetura-apresentacao-itau.md).
+
 ## Pré-requisitos
 
 - **Java 17+** (recomendado: Eclipse Temurin)
@@ -136,6 +139,7 @@ Branch principal: **main**.
 | Documento | Descrição |
 |-----------|-----------|
 | [docs/relatorio-tecnico.md](docs/relatorio-tecnico.md) | **Anexo técnico**: arquitetura detalhada, padrões, segurança, integrações e aprofundamentos para avaliação |
+| [docs/diagrama-arquitetura-apresentacao-itau.md](docs/diagrama-arquitetura-apresentacao-itau.md) | **Slides / executivo**: diagramas Mermaid (contexto, contêineres, infra, Kafka, sequência ACL) fora do relatório técnico |
 
 ## Como executar
 
@@ -248,7 +252,8 @@ itau-recuperacao-pj/
 ├── docker-compose-services.yml     # Microsserviços adicionais (Compose overlay)
 ├── config/                          # Ex.: exclusões SpotBugs
 ├── docs/
-│   └── relatorio-tecnico.md        # Anexo técnico para avaliação
+│   ├── relatorio-tecnico.md              # Anexo técnico para avaliação
+│   └── diagrama-arquitetura-apresentacao-itau.md  # Diagramas para apresentação Itaú
 ├── renegociacao-service/
 │   ├── pom.xml
 │   ├── Dockerfile
