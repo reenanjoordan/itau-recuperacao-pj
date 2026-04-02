@@ -78,7 +78,7 @@ jobs:
 
       - name: Upload CycloneDX SBOM
         if: success()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: cyclonedx-sbom
           path: "**/target/bom.json"
@@ -87,7 +87,7 @@ jobs:
 
       - name: Upload test results
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: test-results
           path: '**/target/surefire-reports/'
@@ -95,7 +95,7 @@ jobs:
 
       - name: Upload JaCoCo coverage report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: jacoco-coverage
           path: '**/target/site/jacoco/'
