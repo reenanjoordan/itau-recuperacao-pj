@@ -1,12 +1,5 @@
 # Relatório Técnico — Modernização do Sistema de Recuperação de Crédito PJ
 
-## Itaú Unibanco | Engenharia TI Pleno — Recuperação PJ
-
-**Autor:** Engenharia de Software — Recuperação PJ  
-**Data:** Abril/2026  
-**Versão:** 1.0  
-**Classificação:** Documento Interno  
-
 ---
 
 ## Sumário
@@ -643,5 +636,4 @@ itau-recuperacao-pj/
 
 ---
 
-*Documento gerado pela Engenharia de Software — Recuperação PJ | Itaú Unibanco*  
-*Classificação: Documento Interno | Atualizado em Abril/2026*
+*Documento gerado por Renan Jordão*
