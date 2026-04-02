@@ -1,11 +1,5 @@
 # Diagrama de arquitetura — apresentação Itaú
 
-Documento **independente** do [relatorio-tecnico.md](relatorio-tecnico.md), pensado para slides ou leitura executiva: visão de contexto, componentes, dados e fluxo de eventos do **Itaú Recuperação PJ** (referência de modernização).
-
-**Dica:** no GitHub ou no VS Code (extensão Mermaid), os blocos abaixo rendem como diagrama. Para exportar imagem (PNG/SVG), use [Mermaid Live Editor](https://mermaid.live) colando cada bloco.
-
----
-
 ## 1. Visão de contexto (C4 — nível de sistema)
 
 Quem interage com a solução e qual o papel do legado:
