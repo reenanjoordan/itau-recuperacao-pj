@@ -59,12 +59,32 @@ Armazenamento:
 - **Maven 3.9+**
 - **Docker** e **Docker Compose**
 
+## Repositório no GitHub
+
+Código-fonte e CI estão em: [https://github.com/reenanjoordan/itau-recuperacao-pj](https://github.com/reenanjoordan/itau-recuperacao-pj)
+
+Clone e trabalhe **sempre** na pasta do projeto (`itau-recuperacao-pj`), não no diretório do usuário onde possa existir outro `.git` sem relação com este repositório.
+
+```bash
+git clone https://github.com/reenanjoordan/itau-recuperacao-pj.git
+cd itau-recuperacao-pj
+```
+
+Branch principal: `main`.
+
+## Documentação adicional
+
+| Documento | Descrição |
+|-----------|-----------|
+| [docs/relatorio-tecnico.md](docs/relatorio-tecnico.md) | Relatório técnico (arquitetura, padrões, segurança) |
+| [docs/guia-validacao-e-apresentacao-itau.md](docs/guia-validacao-e-apresentacao-itau.md) | Checklist de validação local e roteiro de apresentação |
+
 ## Como Executar
 
 ### 1. Subir a infraestrutura (Kafka, PostgreSQL, Redis)
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 ### 2. Compilar e executar os testes
@@ -83,12 +103,11 @@ mvn spring-boot:run
 ### 4. Subir todos os servicos via Docker
 
 ```bash
-# Primeiro, compilar os JARs
+# Primeiro, compilar os JARs de todos os modulos
 mvn clean package -DskipTests
 
-# Depois, subir infraestrutura + servicos
-docker-compose up -d
-docker-compose -f docker-compose-services.yml up -d
+# Infraestrutura + microsserviços na mesma stack Compose (rede compartilhada)
+docker compose -f docker-compose.yml -f docker-compose-services.yml up -d --build
 ```
 
 ## URLs Uteis
@@ -151,6 +170,7 @@ itau-recuperacao-pj/
 ├── docker-compose.yml               # Infraestrutura (Kafka, PostgreSQL, Redis)
 ├── docker-compose-services.yml      # Microsservicos
 ├── .github/workflows/ci.yml         # Pipeline CI/CD
+├── docs/                            # Relatorio tecnico e guia de validacao
 ├── renegociacao-service/            # Servico principal de renegociacao
 │   ├── pom.xml
 │   ├── Dockerfile

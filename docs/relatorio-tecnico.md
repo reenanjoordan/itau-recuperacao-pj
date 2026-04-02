@@ -585,7 +585,7 @@ private String mascararCpfCnpj(String cpfCnpj) {
 
 Repositório do projeto:
 
-**URL:** [https://github.com/SEU_USUARIO/itau-recuperacao-pj](https://github.com/SEU_USUARIO/itau-recuperacao-pj)
+**URL:** [https://github.com/reenanjoordan/itau-recuperacao-pj](https://github.com/reenanjoordan/itau-recuperacao-pj)
 
 ### Estrutura do Repositório
 
@@ -596,8 +596,9 @@ itau-recuperacao-pj/
 ├── pagamento-service/           # Serviço de pagamento (porta 8083)
 ├── notificacao-service/         # Serviço de notificação (porta 8084)
 ├── legado-acl-service/          # Anti-Corruption Layer (porta 8085)
-├── docs/                        # Documentação técnica
-├── docker-compose.yml           # Orquestração local
+├── docs/                        # Documentação (relatório técnico, guia de validação)
+├── docker-compose.yml           # Orquestração local (infra)
+├── docker-compose-services.yml  # Microsserviços (sobrepor ao compose de infra)
 ├── pom.xml                      # POM pai (Maven multi-module)
 └── README.md                    # Documentação geral
 ```

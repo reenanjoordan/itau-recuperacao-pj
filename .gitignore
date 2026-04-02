@@ -9,6 +9,10 @@ release.properties
 # IDE
 .idea/
 *.iml
+
+# Cursor / ferramentas locais do workspace (não versionar)
+.cursor/
+mcps/
 .project
 .classpath
 .settings/

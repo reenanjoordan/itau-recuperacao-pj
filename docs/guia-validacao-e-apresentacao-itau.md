@@ -39,7 +39,7 @@ lsof -i :8082   # renegociacao-service
 ## PASSO 2 — Compilar o Projeto Completo
 
 ```bash
-# Na raiz do repositório (pasta que contém pom.xml e este guia)
+# Na raiz do repositório (pasta que contém pom.xml; este guia está em docs/)
 cd itau-recuperacao-pj
 
 # Limpar e compilar todos os módulos sem rodar testes ainda
