@@ -250,7 +250,8 @@ itau-recuperacao-pj/
 ├── docker-compose-services.yml     # Microsserviços adicionais (Compose overlay)
 ├── config/                          # Ex.: exclusões SpotBugs
 ├── docs/
-│   └── relatorio-tecnico.md        # Anexo técnico para avaliação
+│   ├── relatorio-tecnico.md        # Anexo técnico para avaliação
+│   └── plano-apresentacao-itau.md # Roteiro de apresentação ao Itaú
 ├── renegociacao-service/
 │   ├── pom.xml
 │   ├── Dockerfile
