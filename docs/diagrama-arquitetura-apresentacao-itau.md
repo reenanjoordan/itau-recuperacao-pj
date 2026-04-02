@@ -150,16 +150,3 @@ sequenceDiagram
   Ren-->>GW: Resposta JSON
   GW-->>Canal: Resposta
 ```
-
----
-
-## 6. Mensagens para slide (copiar/colar)
-
-- **Strangler Fig:** coexistência com o mainframe enquanto capacidades migram para microsserviços.
-- **ACL:** `legado-acl-service` concentra tradução de contrato; o domínio moderno não “vaza” detalhe do legado.
-- **Eventos:** Kafka desacopla cobrança, pagamento e notificação do núcleo de renegociação.
-- **Qualidade de engenharia:** build reprodutível com Enforcer, SpotBugs e SBOM CycloneDX no POM raiz (ver README).
-
----
-
-*Documento gerado para apresentações institucionais. Detalhamento técnico completo permanece no relatório técnico.*
