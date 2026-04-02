@@ -1,0 +1,128 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:15-alpine
+        env:
+          POSTGRES_DB: renegociacao_db
+          POSTGRES_USER: renegociacao
+          POSTGRES_PASSWORD: renegociacao123
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Cache Maven packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - name: Build and test
+        run: mvn clean verify -B
+        env:
+          DB_HOST: localhost
+          DB_PORT: 5432
+          DB_NAME: renegociacao_db
+          DB_USER: renegociacao
+          DB_PASSWORD: renegociacao123
+          REDIS_HOST: localhost
+          REDIS_PORT: 6379
+
+      # Grafo de dependências para Dependency Review e alertas do GitHub (repositório público/Advanced Security).
+      - name: Submit Maven dependency graph
+        if: success() && (github.event_name == 'push' || github.event_name == 'pull_request')
+        continue-on-error: true
+        uses: advanced-security/maven-dependency-submission-action@v4
+        with:
+          directory: ${{ github.workspace }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload CycloneDX SBOM
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cyclonedx-sbom
+          path: "**/target/bom.json"
+          retention-days: 30
+          if-no-files-found: warn
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: '**/target/surefire-reports/'
+          retention-days: 7
+
+      - name: Upload JaCoCo coverage report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: jacoco-coverage
+          path: '**/target/site/jacoco/'
+          retention-days: 7
+
+  docker-build:
+    runs-on: ubuntu-latest
+    needs: build-and-test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Build without tests
+        run: mvn clean package -DskipTests -B
+
+      - name: Build Docker images
+        run: |
+          docker build -t itau-recuperacao/renegociacao-service:latest ./renegociacao-service
+          docker build -t itau-recuperacao/cobranca-service:latest ./cobranca-service
+          docker build -t itau-recuperacao/pagamento-service:latest ./pagamento-service
+          docker build -t itau-recuperacao/notificacao-service:latest ./notificacao-service
+          docker build -t itau-recuperacao/legado-acl-service:latest ./legado-acl-service

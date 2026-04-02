@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Filtros SpotBugs (use apenas para falsos positivos documentados).
+  Threshold do build está em High; se voltar a Medium, revise antes de ampliar exclusões.
+-->
+<FindBugsFilter/>
