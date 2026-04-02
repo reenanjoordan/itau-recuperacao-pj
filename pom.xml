@@ -34,7 +34,7 @@
         <springdoc.version>2.3.0</springdoc.version>
         <mapstruct.version>1.5.5.Final</mapstruct.version>
         <!-- Qualidade / segurança (reactor) -->
-        <maven-enforcer-plugin.version>3.5.0</maven-enforcer-plugin.version>
+        <maven-enforcer-plugin.version>3.6.2</maven-enforcer-plugin.version>
         <spotbugs-maven-plugin.version>4.8.6.6</spotbugs-maven-plugin.version>
         <cyclonedx-maven-plugin.version>2.9.1</cyclonedx-maven-plugin.version>
         <spotbugs.exclude.file>${maven.multiModuleProjectDirectory}/config/spotbugs-exclude.xml</spotbugs.exclude.file>
