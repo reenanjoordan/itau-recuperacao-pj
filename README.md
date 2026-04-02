@@ -77,7 +77,6 @@ Branch principal: `main`.
 | Documento | Descrição |
 |-----------|-----------|
 | [docs/relatorio-tecnico.md](docs/relatorio-tecnico.md) | Relatório técnico (arquitetura, padrões, segurança) |
-| [docs/guia-validacao-e-apresentacao-itau.md](docs/guia-validacao-e-apresentacao-itau.md) | Checklist de validação local e roteiro de apresentação |
 
 ## Como Executar
 
@@ -210,4 +209,4 @@ itau-recuperacao-pj/
 
 ## Autor
 
-Equipe de Modernizacao — Itau Recuperacao PJ
+Renan Jordão
