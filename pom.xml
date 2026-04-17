@@ -31,7 +31,7 @@
         <!-- 1.21.4+ corrige Docker Engine 29 (API mín. 1.44); ver docker-java.properties nos testes -->
         <testcontainers.version>1.21.4</testcontainers.version>
         <resilience4j.version>2.1.0</resilience4j.version>
-        <springdoc.version>2.3.0</springdoc.version>
+        <springdoc.version>3.0.2</springdoc.version>
         <mapstruct.version>1.5.5.Final</mapstruct.version>
         <!-- Qualidade / segurança (reactor) -->
         <maven-enforcer-plugin.version>3.5.0</maven-enforcer-plugin.version>
